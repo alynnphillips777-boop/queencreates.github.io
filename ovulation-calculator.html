@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ovulation Calculator</title>
+</head>
+<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+<h1>Ovulation Calculator</h1>
+
+<p>Enter the first day of your last period</p>
+
+<input type="date" id="date">
+<br><br>
+
+<button onclick="calculateOvu()">Calculate</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calculateOvu() {
+    let date = new Date(document.getElementById("date").value);
+
+    if (!date.getTime()) {
+        document.getElementById("result").innerHTML = "Please select a date";
+        return;
+    }
+
+    date.setDate(date.getDate() + 14);
+
+    document.getElementById("result").innerHTML =
+        "Estimated ovulation date: " + date.toDateString();
+}
+</script>
+
+</body>
+</html>
