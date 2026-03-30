@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Interest Calculator</title>
+</head>
+<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+<h1>Credit Card Interest Calculator</h1>
+
+<input type="number" id="balance" placeholder="Balance ($)">
+<br><br>
+
+<input type="number" id="rate" placeholder="Interest Rate (%)">
+<br><br>
+
+<input type="number" id="payment" placeholder="Monthly Payment ($)">
+<br><br>
+
+<button onclick="calculateCC()">Calculate</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calculateCC() {
+    let balance = document.getElementById("balance").value;
+    let rate = document.getElementById("rate").value / 100 / 12;
+    let payment = document.getElementById("payment").value;
+
+    let months = 0;
+
+    while (balance > 0) {
+        balance = balance * (1 + rate) - payment;
+        months++;
+        if (months > 600) break;
+    }
+
+    document.getElementById("result").innerHTML =
+        "Estimated payoff time: " + months + " months";
+}
+</script>
+
+</body>
+</html>
