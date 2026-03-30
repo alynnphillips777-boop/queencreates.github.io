@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Calculator</title>
+    <meta name="description" content="Free calorie calculator to estimate daily calorie needs.">
+</head>
+<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+<h1>Calorie Calculator</h1>
+<p>Estimate how many calories you need per day</p>
+
+<input type="number" id="weight" placeholder="Weight (lbs)">
+<br><br>
+
+<input type="number" id="height" placeholder="Height (inches)">
+<br><br>
+
+<input type="number" id="age" placeholder="Age">
+<br><br>
+
+<select id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select>
+
+<br><br>
+
+<button onclick="calculateCalories()">Calculate</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calculateCalories() {
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value;
+    let age = document.getElementById("age").value;
+    let gender = document.getElementById("gender").value;
+
+    if (weight && height && age) {
+        let bmr;
+
+        if (gender === "male") {
+            bmr = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);
+        } else {
+            bmr = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * age);
+        }
+
+        document.getElementById("result").innerHTML = 
+            "Estimated daily calories: " + Math.round(bmr);
+    } else {
+        document.getElementById("result").innerHTML = "Please fill all fields";
+    }
+}
+</script>
+
+</body>
+</html>
