@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <meta name="description" content="Free BMI Calculator - Check your body mass index instantly">
+</head>
+<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+    <h1>Free BMI Calculator</h1>
+    <p>Enter your height and weight</p>
+
+    <input type="number" id="weight" placeholder="Weight (lbs)">
+    <br><br>
+    <input type="number" id="height" placeholder="Height (inches)">
+    <br><br>
+
+    <button onclick="calculateBMI()">Calculate</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateBMI() {
+            let weight = document.getElementById("weight").value;
+            let height = document.getElementById("height").value;
+
+            if (weight && height) {
+                let bmi = (weight / (height * height)) * 703;
+                bmi = bmi.toFixed(1);
+
+                document.getElementById("result").innerHTML = "Your BMI is " + bmi;
+            } else {
+                document.getElementById("result").innerHTML = "Please enter values";
+            }
+        }
+    </script>
+
+</body>
+</html>
